@@ -7,8 +7,13 @@ console.log (computerSelection());*/
 
 let getComputerChoice = function() {let a = computerSelection == 1? "rock" : computerSelection == 2? "paper" : computerSelection == 3? "scissors" : "error"; return a;}
 console.log(getComputerChoice())
-/* getComputerChoice should return a word, like rock paper or scissors. playerChoice should also be a word. playerSelection and ComputerSelection don't need to be words. I guess those (the selections) will be the numbers to determine who won. So change that mess, */
+
+
 let playerChoice = prompt("Rock, paper, or scissors?");
+console.log(playerChoice)
+
+playerChoice = playerChoice.toLowerCase();
+
 console.log(playerChoice)
 
 let playerSelection = (playerChoice.toLowerCase() == "rock")? 1 : (playerChoice.toLowerCase()) == "paper"? 2 : (playerChoice.toLowerCase()) == "scissors"? 3 : "error";
@@ -16,14 +21,31 @@ console.log(playerSelection)
 
 
 /* Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock" */
-let whoWon = (playerChoice - getComputerChoice()) //=> {let result = playerChoice - getComputerChoice(); (result == -1 || result == 2)? `You win! ${playerSelection} beats ${computerSelection}!`}
-let playRound = (playerSelection, computerSelection) => {}
+//let whoWon = (playerSelection - computerSelection) => {let result = playerChoice - getComputerChoice(); (result == -1 || result == 2)? `You win! ${playerSelection} beats ${computerSelection}!`}
+//let playRound = /*function(playerSelection, computerSelection)  {if(playerSelection - computerSelection == 0) {return `It's a tie!`} else if ((playerSelection - computerSelection == -1) || (playerSelection - computerSelection == 2)){return `You win! ${playerChoice} beats ${getComputerChoice()}`} else if ((playerSelection - computerSelection == 1) || (playerSelection - computerSelection == -2)) {return `You lose! ${getComputerChoice()} beats ${playerChoice}`}};*/
+//let whoWon = playerSelection - computerSelection;
+let win = 0;
+//if (whoWon == -1 || whoWon == 2) {win++};
+let tie = 0;
+//if (whoWon == 0) {tie++}
+let lose = 0;
+//if (whoWon == 1 || whoWon == -2) {lose++}
+let winMessage = `You win! ${playerChoice} beats ${getComputerChoice()}`;
+let tieMessage = `It's a tie!`;
+let loseMessage = `You lose! ${getComputerChoice()} beats ${playerChoice}`;
+//win > lose
+//win < lose
+let outcome = playerSelection - computerSelection;
+console.log(outcome)
+function playRound(playerSelection, computerSelection) {let outcome = playerSelection - computerSelection; console.log(outcome); if(outcome == -1 || outcome == 2){win++; return winMessage} else if (outcome == 0){tie++; return tieMessage} else if(outcome == 1 || outcome == -2){lose++; return loseMessage} else {return "error"}}
+
+console.log(playRound())
 
 /* Write a NEW function called game(). Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end. */
-let game = function() { 
+/*let game = function() { 
     for (let i = 0; i < 5; i++) {
         playRound()
     }
-}
+}*/
 
 /* Use prompt() to get input from the user. */
